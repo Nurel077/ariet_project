@@ -1,0 +1,5 @@
+[build]
+providers = ["docker"]
+
+[build.dockerfile-location]
+dockerfile = "Dockerfile"
