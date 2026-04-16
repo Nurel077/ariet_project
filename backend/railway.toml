@@ -1,0 +1,10 @@
+[build]
+# Явно указываем использовать Docker
+builder = "dockerfile"
+dockerfile = "Dockerfile"
+
+[deploy]
+startCommand = "node server.js"
+
+[env]
+NODE_ENV = "production"

@@ -1,0 +1,9 @@
+# Railway ignore file
+# Это предотвратит автоматическое обнаружение Railpack
+
+# Игнорируем все и используем Docker
+*
+!Dockerfile
+!.dockerignore
+!railway.toml
+!railway.json

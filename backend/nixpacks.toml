@@ -1,5 +1,3 @@
+# Используем Docker Dockerfile для сборки
 [build]
-providers = ["docker"]
-
-[build.dockerfile-location]
-dockerfile = "Dockerfile"
+builder = "dockerfile"
