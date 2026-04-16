@@ -1,0 +1,28 @@
+# Railway Deployment Configuration
+# Явно указываем использовать Docker для каждого сервиса
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    port: 4000
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    environment:
+      NODE_ENV: production
+    port: 5173
+
+  admin:
+    build:
+      context: .
+      dockerfile: ./admin/Dockerfile
+    environment:
+      NODE_ENV: production
+    port: 5174

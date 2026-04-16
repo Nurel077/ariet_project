@@ -1,3 +1,0 @@
-# Используем Docker Dockerfile для сборки
-[build]
-builder = "dockerfile"
