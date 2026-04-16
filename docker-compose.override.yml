@@ -1,0 +1,47 @@
+version: '3.8'
+
+# This file is for local development
+# To use: docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - MONGO_URL=mongodb://mongodb:27017/food-delivery
+      - JWT_SECRET=dev-secret-key
+      - PORT=4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    command: npm run server
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_URL=http://localhost:4000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev -- --host
+
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_URL=http://localhost:4000
+    ports:
+      - "5174:5174"
+    volumes:
+      - ./admin:/app
+      - /app/node_modules
+    command: npm run dev -- --host
