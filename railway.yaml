@@ -4,8 +4,8 @@
 services:
   backend:
     build:
-      context: .
-      dockerfile: ./backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
       PORT: 4000
@@ -13,16 +13,16 @@ services:
 
   frontend:
     build:
-      context: .
-      dockerfile: ./frontend/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
     port: 5173
 
   admin:
     build:
-      context: .
-      dockerfile: ./admin/Dockerfile
+      context: ./admin
+      dockerfile: Dockerfile
     environment:
       NODE_ENV: production
     port: 5174
