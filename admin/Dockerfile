@@ -3,21 +3,24 @@ FROM node:18-alpine AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copy package files
+COPY package.json package-lock.json ./
 
+# Install dependencies
 RUN npm ci
 
+# Copy source code
 COPY . .
 
 # Build the Vite app
 RUN npm run build
 
-# Production stage - use serve to host built files
+# Production stage - use serve for hosting
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Install serve for hosting static files
+# Install serve globally
 RUN npm install -g serve
 
 # Copy built app from build stage

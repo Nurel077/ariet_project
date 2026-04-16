@@ -5,11 +5,13 @@ WORKDIR /app
 # Set Node environment to production
 ENV NODE_ENV=production
 
-COPY package*.json ./
+# Copy package files FIRST
+COPY package.json package-lock.json ./
 
-# Install only production dependencies
-RUN npm ci --only=production
+# Install dependencies with correct npm flag
+RUN npm ci --omit=dev
 
+# Copy the rest of the app
 COPY . .
 
 EXPOSE 4000
