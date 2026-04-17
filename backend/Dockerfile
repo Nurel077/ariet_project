@@ -6,13 +6,13 @@ WORKDIR /app
 ENV NODE_ENV=production
 
 # Copy package files FIRST
-COPY package*.json ./
+COPY backend/package*.json ./
 
 # Install dependencies with correct npm flag
 RUN npm install --omit=dev
 
 # Copy the rest of the app
-COPY . .
+COPY backend/ .
 
 EXPOSE 4000
 

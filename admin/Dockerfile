@@ -4,13 +4,13 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY admin/package*.json ./
 
 # Install dependencies
 RUN npm install
 
 # Copy source code
-COPY . .
+COPY admin/ .
 
 # Build the Vite app
 RUN npm run build
