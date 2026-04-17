@@ -26,4 +26,4 @@ COPY --from=build /app/dist ./dist
 EXPOSE 5173
 
 # Serve the built app
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-5173}"]
+CMD npx serve -s dist -l tcp://0.0.0.0:${PORT:-5173}
