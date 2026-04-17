@@ -26,4 +26,4 @@ COPY --from=build /app/dist ./dist
 EXPOSE 5173
 
 # Serve the built app
-CMD ["serve", "-s", "dist", "-l", "5173"]
+CMD ["sh", "-c", "serve -s dist -l ${PORT:-5173}"]
